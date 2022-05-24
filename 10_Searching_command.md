@@ -1,7 +1,7 @@
 # Find
 - Câu lệnh `find [không gian tìm kiếm] [options]`
 - Options:
-  - `-name [tên file]`: tìm kiếm file với tên đã biết. 
+  - `-name [tên file]`: tìm kiếm file với tên đã biết.
      - VD1: `find / -name root` là tìm kiếm file có tên là `root` nằm trong thư mục `/` 
      - VD1: `find /etc -name *.conf` là tìm kiếm file có đuôi `.conf` trong thư mục `/etc`
   - `-atime`(**access time**): thời gian file được read hoặc write
