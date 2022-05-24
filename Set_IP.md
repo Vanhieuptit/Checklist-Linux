@@ -36,8 +36,6 @@ ls
  DNS1 8.8.8.8
  DNS2 8.8.8.1
  ```
- ![](https://imgur.com/3FH6MI2.png)
-- Ví dụ thiết lập ip động cho server
 ![](https://imgur.com/3FH6MI2.png)
 ## Cấu hình bằng trương trình nmcli
 - ***nmcli*** (NetworkManager Command Line Interface) là công cụ giúp điều khiển quản lý mạng bằng dòng lệnh thông qua NetworkManager.
