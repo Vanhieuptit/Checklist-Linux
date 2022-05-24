@@ -87,6 +87,15 @@
   - Giao diện :` GNOME và KDE `
   - Giấy phép :`GNU GPL và giấy phép khác`
   - Website chính thức:` CentOS.org`
+# Các dạng Distro khác
+- Distro cho doanh nghiệp: Red Hat Enterprise Linux
+- Distro cho server: CentOS hoặc Debian
+- Distro cho desktop: Linux Mint Cinnamon
+- Distro cho laptop: Ubuntu MATE
+- Distro cho máy yếu: Lubuntu
+- Distro cho xử lý đa phương tiện: Ubuntu Studio
+- Distro cho di động: Plasma Mobile
+- Distro cho điện thoại thông minh: Android
 # Tài liệu tham khảo
 https://vi.wikipedia.org/wiki/Debian
 https://vi.wikipedia.org/wiki/Ubuntu
