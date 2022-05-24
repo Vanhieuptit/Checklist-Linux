@@ -5,10 +5,10 @@
 4. [Tìm hiểu 32bit và 64bit](3_32bit_and_64bit.md)
 5. [File torrent để download iso](4_File_torrent.md)
 6. [Các bản Centos7](5_Cac_ban_Centos7.md)
-7. [Sét Ip cho Centos 7](Set_Ip.md)
+7. [Sét Ip cho Centos 7](Set_IP.md)
 
 10. [Tiến trình trong linux](10_Process_linux.md)
-11. [Tiếm kiếm trong linux](10_Searching_command.md)
+11. [Tìm kiếm trong linux](10_Searching_command.md)
 12. [Người dùng và nhóm người dùng](11_User_and_group_in_linux.md)
 13. [Nén và giải nen file](13_Extract_file.md)
 14. [Phân vùng ổ đĩa](13_Partition_in_linux.md)
