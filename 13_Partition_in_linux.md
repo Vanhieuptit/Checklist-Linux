@@ -22,7 +22,7 @@
 ![](https://imgur.com/srPzXLp.png)
 - Một ổ đĩa MBR hỗ trợ tối đa 4 phần vùng chính (Primary Partition). Ở đầu các phần vùng sẽ có các sector (với dung lượng bằng nhau 512 bytes). Toàn bộ thông tin về partition đều được lưu ở sector đầu tiên phân vùng. 
 ![](https://imgur.com/uqI7l09.png)
-### GPT
+### GPT 
 - GPT (GUID Partition Table) là chuẩn mới hơn MBR, hỗ trợ đến 128 phân vùng trên một ổ đĩa vật lý. Thông tin về các partition sẽ được ghi thành nhiều bản rải rác khắp ổ vật lý.
 - Trên ổ đĩa MBR, dữ liệu của phần vùng và dữ liệu khởi động được lưu trữ ở một vị trí. Nếu dữ liệu này bị ghi đè hoặc hỏng, khi đó bạn sẽ phải gặp các rắc rồi. Ngược lại GPT lưu trữ nhiều bản sao của các dữ liệu này trên đĩa, do đó bạn có thể khôi phục các dữ liệu nếu dữ liệu này bị lỗi.
 - GPT hỗ trợ cơ chế kiểm tra và chỉnh sửa dữ liệu dựa trên CRC (cyclic redundancy check). Nhờ 2 cơ chế này, chuẩn GPT làm giảm tỷ lệ mất mát dữ liệu. Ngoài ra, nếu ta cần khởi tạo một phần vùng với dung lượng lớn hơn 2TB, ta sẽ phải dùng GPT vì MBR không hỗ trợ dung lượng lớn hơn 2TB.
