@@ -10,7 +10,7 @@
 # Các câu lệnh quản lý user
 - `useradd`: là lệnh tạo tài khoản user
 ` useradd [options][login_name]
-- **Option**
+- **Option** 
   - `-c`(comment):tạo bí danh
   - `-u`: set user ID: mặc định sẽ lấy số ID tiếp theo để gắn cho user (bắt đầu từ 1000)
   - `-d`: chỉ định thư mục home cho user
