@@ -36,8 +36,6 @@ ls
  DNS1 8.8.8.8
  DNS2 8.8.8.1
  ```
- ![](https://imgur.com/3FH6MI2.png)
-- Ví dụ thiết lập ip động cho server
 ![](https://imgur.com/3FH6MI2.png)
 ## Cấu hình bằng trương trình nmcli
 - ***nmcli*** (NetworkManager Command Line Interface) là công cụ giúp điều khiển quản lý mạng bằng dòng lệnh thông qua NetworkManager.
@@ -90,5 +88,30 @@ có thể được viết thành
 ```
 nmcli c a type eth
 ```
-
+### Các bước thiết lập ip bằng nmcli
+- Để kiểm tra trạng thái của các card
+```
+nmcli d
+```
+- Đặt IP
+```
+nmcli c modify eth0 ipv4.addresses 10.0.0.5/24
+```
+Đặt gateway
+```
+nmcli c modify eth0 ipv4.gateway 10.0.0.1
+```
+Cấu hình DNS
+```
+nmcli c modify eth0 ipv4.dns ip
+```
+Đặt động hoặc tĩnh
+```
+nmcli c modify eth0 ipv4.method manual    # Đăt tĩnh nếu động sử dụng auto
+```
+Khởi động lại card
+```
+nmcli c down eth0
+nmcli c up eth0
+```
 
