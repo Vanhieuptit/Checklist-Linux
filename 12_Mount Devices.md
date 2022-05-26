@@ -1,9 +1,12 @@
 > # Mount filesystem trong Linux
 - Khi ổ đĩa được phân vùng, Linux cần một số cách để truy cập dữ liệu trên các phân vùng. Không giống như Windows (thực hiện bằng cách gán các ký tự ổ đĩa cho mỗi phân vùng), Linux sử dụng một cây thư mục (folder tree) thống nhất: trong đó mỗi phân vùng được gắn kết tại một điểm gắn kết(mount point) trên cây đó.
 ## Mount Devices
-### File /etc/fstab
-- fstab (file system table) là một bảng lưu trữ thông tin các thiết bị, mount point và các thiết lập của nó.
-- Khi khởi động, Linux sẽ đọc thông tin trong file này và tiến hành tự động mount thiết bị.
+#### File /etc/fstab
+- fstab (file system table) là một bảng lưu trữ thông tin các thiết bị, mount point và các thiết lập của nó. Tức là kiểm soát các **filesystem** nào được mount.
+- Các thông tin trong `/etc/fstab` :
+  - Đường dẫn tới file đại diện cho thiết bị
+  - Mount point: thiết bị được mount vào thư mục nào
+  - Các tuỳ chọn : chỉ ra thiệt bị được mount như thế nào 
 - file `fstab` này được lưu trữ dưới dạng `plain text` nên có thể chỉnh sửa dễ dàng bằng câu lệnh `cat`  và `vi`.
 - Cấu trúc file `fstab` có dạng
 ![](https://imgur.com/0Orq4aQ.png)
@@ -28,7 +31,11 @@
 - Cột 6: là tuỳ chọn cho chương trình `fsck` dò lỗi file system:
   - nếu là `0`: bỏ qua việc kiểm tra
   - nếu là `1`: thực hiện việc kiểm tra
-## Tên thiết bị trong Linux
+![](https://imgur.com/BdqghJ4.png)
+#### UUID
+- Trước đây, trường thiết bị của fstab đơn giản chỉ là các các tên như `/dev/sd3` cho phân vùng thứ 3 trên ổ cứng thứ nhất. Tuy nhiên, khi các ổ đĩa thường xuyên **add** và **remove** dẫn tới thứ tự sẽ thay đổi liên tục, `sdb3` có thể thành `sda3`
+- UUID sinh ra để giải quyết vấn đề này.
+### Tên thiết bị trong Linux
 - **cdrom**: đĩa CDROM/DVD
 - **hd***: ổ đĩa IDE, ATA
   - **hda**: ổ cứng thứ nhất
@@ -52,8 +59,13 @@
   - `-t`: xác định lại hệ thống tập tin được mount. Những loại hợp lệ là `ext2`, `ext3`, `ext4`, `vfat`, `iso 9600`,...
   - `-a`: mount tất cả các hệ thống tập tin được khai báo trong `fstab`
   - `o`: remount (fs) chỉ định việc mount lại file system nào đó
-### Ví dụ 
-- Mount USB 16GB kết nối vào Server
-- Bước 1: Cắm USB và kiểm tra chính xác ổ USB bằng câu lệnh `fdisk -l` hoặc `df -h`
-![](https://imgur.com/R6k5iu7.png)
-
+## Mount bằng Udisks
+- Udisks là một phần quan trọng của phần mềm được sử dụng trong nhiều bản phân phối Linux.
+- Nó có trách nhiệm quản lý các thiết bị lưu trữ như bộ nhớ flash USB và ổ cứng. Với nó đi kèm một công cụ dòng lệnh gọi là `udisksctl` 
+- Cú pháp: udisksctl [lệnh]
+- Vd: `udiskctl mount -b /dev/sd[b1,b2,...]`
+- Tham số `-b` đơn giản biểu thị rằng những gì bạn đang mount từ một thiết bị
+## Mount kiểu truyền thống
+- Câu lệnh `mount /dev/sd[b1,b2,...] /mnt`
+- `mnt` ở đây là thư mục để ta mount vào
+- Câu lệnh Unmount `unmount /dev/sd[b1,b2,...]`
