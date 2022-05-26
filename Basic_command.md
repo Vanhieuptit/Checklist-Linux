@@ -39,9 +39,72 @@ AUTHOR
 tên tác giả của lệnh
 ```
 ![](https://imgur.com/Z6Dk7sy.png)
->## Các lệnh file system thiết yếu
-### pwd (print working directory)
+## pwd (print working directory)
 - Cho phép biết thư mục hiện hành mà người dùng đang làm việc
-
-
- 
+## lsblk (list block devices)
+- Dùng để liệt kê tên thiết bị, thông tin ổ đĩa và phân vùng trong Linux
+- Thông thường, lệnh lsblk không cần bất kỳ tham số bổ sung nào cũng đủ để xác định ổ đĩa hoặc phân vùng bạn muốn làm việc. Tuy nhiên để tránh trường hợp nhầm lẫn tên thiết bị dẫn đến có thể phá huỷ hoặc làm hỏng dữ liệu ta cần thêm các tham số như
+- `--help` : để xem những cột nào **lsblk** có thể hiển thị
+  - VD: `lsblk --help` 
+![](https://imgur.com/PzR2OBy.png)
+- Có một vài tham số như
+  - **ROTA** cho bạn biết liệu một block device (file đại diện cho một loại thiết bị nào đó với dữ liệu có thể đọc hoặc ghi theo dạng block) có thuộc về thiết bị lưu trữ dạng quay không, giá trị `1` là biểu thị dạng đĩa quay (HDD), `0` là không thể quay (SSD).
+ - **DISC-GRAN** cho thấy mức độ chi tiết của việc loại bỏ hay giải phóng các khối dữ liệu không sử dụng. Đĩa cứng (HDD) không hỗ trợ tính năng này nên cột này hiển thị giá trị 0.
+ - `lsblk -o +ROTA,DISC-GRAN`
+ ![](https://imgur.com/cDidhpZ.png)
+ - Khi thấy một danh sách các phân vùng, bạn có thể biết những gì chúng lưu trữ, dựa trên hệ thống dung lượng của chúng. 
+    - Câu lệnh `lsblk -o +FSTYPE,LABEL`
+![](https://imgur.com/HMBCFGY.png)
+  - Hiển thị thiết bị di động hoặc thẻ nhớ USB
+    - Câu lệnh `lsblk -o +RM` : lệnh này sẽ hiển thị thêm một cột cho bạn biết liệu thiết bị có thể tháo rời không. Giá trị **1** đồng nghĩa với **true**, ám chỉ một USB hoặc các loại phương tiện di động khác.
+![](https://imgur.com/vDtOnHI.png)
+  - Hiển thị model HDD/SSD: hữu ích trong việc bạn muốn tra cứu code chính xác của model thiết bị lưu trữ để nâng cấp firmware hoặc tải xuống driver.
+    - Câu lệnh ` lsblk -d -o +MODEL`
+![](https://imgur.com/3WaUwPt.png)
+- Hiển thị UUID (Universally Unique Identifier) hệ thống file
+  - Các bản Distro Linux cũ đã mount hệ thống file bằng cách chỉ định tên thiết bị của chúng trong `/etc/fstab`. Điều này không đáng tin cậy bời vì `/dev/sda2` có thể trở thành `/dev/sdb2`, khi ta thêm một thiết bị lưu trữ khác vào hệ thống. Vì vậy **UUID** được sử dụng thay thế, giá trị **UUID** vẫn không đổi dù cho bạn thêm vào hoặc loại bỏ bất chúng khỏi máy tính.
+  - Để hiển thị UUID ta dùng câu lệnh: `lsblk -o +UUID`
+![](https://imgur.com/YLoow1b.png)
+## Lệnh dd
+![](https://imgur.com/78sGWPI.png)
+- dd là một lệnh giúp chuyển đổi và sao chép tệp. Câu lệnh `dd` được dùng để sử dụng trong các trường hợp sau:
+  - Sao lưu và phục hồi toàn bộ dữ liệu ổ cứng hoặc một partition
+  - Chuyển đổi định dạng dữ liệu từ ASCII sang EBCDIC hoặc người lại
+  - Sao lưu lại MBR trong máy 
+  - Chuyển đổi chữ thường sang chữ hoa và ngược lại
+  - Tạo một file với kích cỡ cố định
+  - Tạo một file ISO
+- Cấu trúc câu lệnh ` dd if=<địa chỉ đầu vào> of=<địa chỉ đầu ra> <option>`
+  - Option:
+    -  `bs` = bytes: đọc ghi bao nhiêu file 1 lần
+    -  `cbs`= bytes: chuyển đổi bao nhiêu byte một lần
+    -  `count`= Blocks: thực hiện bao nhiêu block trong quá trình thực thi câu lệnh
+    -  `skip`=blocks: bỏ qua bao nhiêu block đầu vào
+    -  `conv`= Convs: chỉ ra các tác vụ cụ thể sau đây
+      - `ascii`: chuyển đổi từ mã EBCDIC sang ASCII
+      - `ebcdic`: chuyển đổi từ mã ASCII sang EBCDIC
+      - `lcase`: chuyển đổi từ chữ thường sang hết thành chữ hoa
+      - `ucase`: chuyển đồi từ chữ hoa sang chữ thường
+      - `nocreat`: không tạo ra file đầu ra
+      - `noerror`: tiếp tục sao chép dữ liệu khi đầu vào bị lỗi
+      - `sync`: đồng bộ dữ liệu với ổ đang sao chép
+  - Các định dạng byte được quy định như sau:
+    - c = 1 byte
+    - w = 2 byte
+    - b = 512 byte
+    - kB = 1000 byte
+    - K = 1024 byte
+    - MB = $ 10^6 $ byte    
+    - M = (1024*1024) byte
+    - GB = $ 10^9 $ byte   
+- VD: Sao lưu toàn bộ ổ cứng
+  - Câu lệnh: `dd if = /dev/sda of = /dev/sdb`: if đại diện cho đầu vào và of đại diện cho tập tin đầu ra. Tức là sau khi thực hiện xong câu lệnh trên, bản sao của /dev/sda sẽ có trong /dev/sdb.
+- Tạo bản sao lưu của thư mục, tệp hoặc phân vùng và tạo image(iso,...)
+  - Câu lệnh: `dd if=/dev/sda4 of=/home/backup/partition.img`
+  - Khôi phục bản sao lưu trước đó bằng câu lệnh `dd if=/home/backup/partition.imd of=/dev/sda41`
+- Sao lưu từ đĩa CDrom: ` dd if=/dev/cdrom of=/root/cdrom.img conv=noerror`
+- Sao chép MBR: `dd if=/dev/sda1 of=/root/mbr.txt bs=512 count=1`
+- Chuyển đổi chữ thường thành chữ hoa
+`dd if=/root/test.doc of=/root/test1.doc conv=ucase`
+- Tạo một phân vùng trống có dung lượng cố định
+` dd if=/dev/zero of=/root/file1 bs=100M count=1`
