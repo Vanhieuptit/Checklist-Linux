@@ -108,3 +108,91 @@ tên tác giả của lệnh
 `dd if=/root/test.doc of=/root/test1.doc conv=ucase`
 - Tạo một phân vùng trống có dung lượng cố định
 ` dd if=/dev/zero of=/root/file1 bs=100M count=1`
+> ## Lệnh mkdir 
+- mkdir là viết tắt của (make directories)
+- Là một lệnh cho phép user được tạo thư mục rỗng trên hệ điều hành Linux. 
+- Có thể tạo được đồng thời nhiều thư mục, cũng như set quyền cho cả thư mục khi tạo ra.
+- Cú pháp:
+  - `mkdir  [option] [tên thư mục]`.
+  - VD: `mkdir new` là tạo thư mục mới có tên là `new`
+  - Các option như
+    - `-m` :phân quyền cho thư mục. VD `mkdir -m 440 newdir` là tạo một thư mục tên là `newdir` với giá trị phân quyền là `440`.
+    - `-p`: tạo thư mục con và tạo kèm thư mục cha của nó. VD: `mkdir -p /root/thu_muc1/thu_muc2` là tạo một thư mục cha có tên là `thu_muc1` sau đó tạo thư mục có tên `thu_muc2` là thư mục con của `thu_muc1`
+    - `-v`: là hiển thị quá trình tạo ra thư mục và cho ra các thông tin như khởi tạo thư mục thành công hay thất bại, thư mục nào đã tồn tại.
+  > ## Lệnh touch
+  - Trong linux, mỗi file đều liên kết và chứa các thông tin
+    -  `timestamp` 
+    -  Thời gian truy cập
+    -  Thời gian chỉnh sửa và thay đổi cuối cùng.
+- Vì vậy khi tạo file mới, truy cập hay chỉnh sửa file thì `timestamp` này cũng tự động cập nhật chính xác lại thời gian trên file.
+- Lệnh touch là một lệnh tạo file trên linux
+- Cú pháp: ` touch [option] [file]`
+  - Tạo 1 file txt rỗng (0 byte) mang tên **newfile**:  `touch newfile.txt`
+  - Tạo ra nhiều file **a.txt**, **b.txt**, **c.txt**: `touch a.txt b.txt c.txt`
+- Các option
+  - `-a`: thay đổi thời gian truy cập file 
+  - `-c`: tránh tạo file mới khi file không tồn tại
+  - `-m`: cập nhật thời gian chỉnh sửa lần cuối cùng
+  - `-c -t YYDDHHMM`: chỉnh thời gian truy cập và chỉnh sửa thời gian truy cập của file theo ngày giờ cụ thể.
+  - `-t YYMMĐHHMM.SS`: chỉ định thời gian cụ thể khi tạo file
+> ## Lệnh rm (remove files or directories)
+- Là một dòng lệnh tiện ích được dùng để xoá các file và thư mục.
+- Cú pháp `rm [option] [file]`
+- file ở đây có thể là 1 hoặc nhiều file các file dk ngăn cách nhau bởi dấu cách.VD. `rm file1 file2 file3`
+- Các option
+  - `-d`: xoá thư mục 
+  - `-r`: xoá thư mục không có dữ liệu và tất cả các file bên trong thư mục đó.
+  - `-i`: yêu cầu nhắc người dùng xác nhận trước khi xoá dữ liệu.
+  - `-l`: chỉ đưa ra 1 lời nhắc xác nhận khi xoá nhiều file.
+  - `-rf`: xoá một thư mục hoặc file được bảo vệ chống ghi.
+> ## Lệnh rmdir
+- Dùng để xoá thư mục
+- Cú pháp: `rmdir [option] [thư mục]`
+- VD1: `rmdir thu_muc1` là xoá thư mục 1
+- VD2: `rmdir thu_muc1 thu_muc2 thu_muc3` là xoá nhiều thư mục rỗng cùng 1 lúc. Chỉ xoá các thư mục rỗng còn không rỗng sẽ không bị xoá.
+- Các option:
+  -  `-p`: xoá thư mục hiện tại và cả thư mục cha của nó. VD `rmdir -p new1/new2`. Là xoá new2 rồi xoá new1, khác với `rmdir new1/new2` câu lệnh này chỉ xoá /new2 còn new1 vẫn giữ
+  -  `-v`: in ra kết quả thư mục đã xoá
+> # Lệnh echo
+- Là một câu lệnh hiển thị một đoạn văn bản lên màn hình
+- Cú pháp `echo [option] [text]
+- Ví dụ: `echo vi du ve lenh echo` sẽ cho ra màn hình như sau
+![](https://imgur.com/lj8dz0Z.png)
+- Ví dụ 2: Gán một giá trị và dùng lệnh `echo` để gọi giá trị đó ra
+```
+# x = 10
+# echo gia trị cua x là $x
+```
+![](https://imgur.com/KZY1R0W.png)
+- Tìm kiếm các file có đuôi nào đó tại thư mục đang đứng. Ví dụ tìm kiếm file có đuôi `.txt` bằng echo như sau
+![](https://imgur.com/law5WMY.png)
+- Ghi vào file bằng echo. VD ghi đoạn text `day la file 1` vào file test
+![](https://imgur.com/3ck7ctN.png)
+> # Lệnh cp
+- Là câu lệnh dùng để sao chép 1 file hoặc thư mục trong linux
+- Sao chép 1 file tại thư mục đang làm việc sang thư mục ~/Documents
+` cp file.txt ~/Documents/`
+- Sao chép khi không đứng tại vị trí thư mục đang đứng, ta dùng đường dẫn 
+`cp ~/Downloads/file.txt ~/Documents/
+- Đổi tên file khi đang sao chép bằng
+`cp ~/Downloads/ten_file_cu.txt ~/Documents/ten_file_moi.txt
+- Sao chép nhiều file bằng cách liệt kê các file vào trong dấu {}. Ví dụ
+` cp ~/Downloads/{file1,file2,file3,jpg,...} ~/Documents/`
+- sao chép tất cả các file cùng loại
+` cp ~/Download/*.jpg ~/Pictures/`
+- Muốn sao chép nhiều loại file hơn ta cũng đặt vào trong dấu {}. VD `cd ~/Download/*.{jpg,png} ~/Picture/`
+- Cụ thể hơn của câu lệnh cp
+` cp [option] source destination`
+- Option 
+  - `-r`, `-R`: sao chép toàn bộ thư mục.
+  - `-v`: hiển thị quá trình copy.
+  - `-a`: copy toàn bộ thư mục và thêm thuộc tính duy trì của file.
+  - `-n`: ép buộc lệnh copy không được ghi đè nếu file nguồn và file đích trùng tên.
+  - `-f`: ép ghi đè khi 2 file bị trùng tên.
+  -  `-p`: copy nhưng giữ lại các thuộc tính của file. Các thuộc tính bao gồm
+    - Access time
+    - Modification date
+    - User ID
+    - Group ID
+    - File mode
+    - Access Control Listst  
