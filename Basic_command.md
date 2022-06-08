@@ -196,3 +196,40 @@ tên tác giả của lệnh
     - Group ID
     - File mode
     - Access Control Listst  
+## Lệnh sed (stream editor)
+- Là công cụ giúp thao tác với văn bản như tìm kiếm, chỉnh sửa xoá bằng dòng lệnh
+- Cấu trúc lệnh `sed [options] [scripts] [input_file]
+- Option:
+  - `-i`: chỉnh sửa trực tiếp vào file.
+- Cho 1 file `test.txt` có nội dung
+```
+Noi dung thu 1
+Noi dung thu 2
+Noi dung thu 3
+```
+- TH1: Tìm kiếm và thay thế (phân biệt chữ hoa và chữ thường). VD tìm kiếm từ `dung` và thay thế bằng `DUNG`:
+` sed s/dung/DUNG/ test.txt`. Màn hình sẽ hiện nội dung sau khi thay thế, tuy nhiên nội dung gốc vẫn không bị ảnh hưởng.
+![](https://imgur.com/VwTCB63.png)
+- TH2: Tìm kiếm và thay thế (thay đổi luôn nội dung file). `sed -i s/dung/DUNG/i test.txt`
+![](https://imgur.com/hCh51Qq.png)
+- TH3: Tìm kiếm và thay thế (lưu nội dungg thay đổi ra file mới)
+` sed -i .modified s/dung/DUNG test.txt`
+## Câu lệnh wget (world wide web get)
+- Là một câu lệnh dùng để trích xuất dữ liệu và nội dung từ nhiều web servers khác nhau.
+- Để có thể sử dụng câu lệnh wget, ta cần tải nó về bằng `yum install -y wget`
+- Sử dụng wget để tải từng file và lưu nó vào thư mục hiện hành. Ví dụ 
+- Sử dụng wget để tải nhiều file bằng cách
+  - Tạo một file `test.txt` sau đó mở nó lên và ghi cho nó các nội dung cần tải. Ví dụ:
+```
+https://wordpress.org/latest.zip
+https://downloads.joomla.org/cms/joomla3/3-8-5/Joomla_3-8-5-Stable-Full_Package.zip
+https://ftp.drupal.org/files/projects/drupal-8.4.5.zip
+``` 
+  - Lưu file lại sau đó chạy câu lệnh `wget -i test.txt`  . `-i` để lấy tất các các file chứa trong file test.
+- Tải file về máy dưới 1 tên khác. Ví dụ `wget -O wordpress-install.zip https://wordpress.org/latest.zip`. Ý nghĩa là file tải về sẽ được lưu dưới tên wordpress-install.zip thay vì tên gốc.
+- Tải file về 1 thư mục được chỉ định. Ví dụ: `wget -P documents/archives/ https://wordpress.org/latest.zip`. Lúc này file tải về sẽ xuất hiện trong thư mục documents/archives/.
+- Giới hạn tốc độ tải file được dùng khi ta muốn tải 1 file lớn và tránh trường hợp chúng dùng hết băng thông của bạn. Ví dụ  `wget --limit-rate=500k https://wordpress.org/latest.zip` .
+- Đặt số lần thử tải lại được dùng khi kết nối internet bị gián đoạn gây lỗi quá trình tải về. Để xử lý ta có thể tăng số lần thử lại bằng các dùng option `-tries`. VD: `wget -tries=100 https://wordpress.org/latest.zip`. 
+- Tải file trong background được sử dụng khi ta muốn tải file cực lớn và cho nó chạy ẩn để làm các tác vụ khác. Ví dụ: `wget -b https://example.com/beefy-file.tar.gz`. Và để kiểm tra tiến trình và tính trạng ta dùng lệnh `tail -f wget-log`
+- Tiếp tục tải file khi bị gián đoạn, mà không muốn tải lại file từ đầu, ta thêm option `-c`. VD: `wget -c https://example/very-big-file.zip`
+- Tải nhiều file và ta muốn đánh stt cho chúng. Ví dụ `wget http://example.com/images/{1..50}.jpg`
