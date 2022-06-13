@@ -8,7 +8,7 @@
   - Vd: `ls -l -a` <=> `ls -la`
   - arguments: tham số lệnh
 > **Lưu ý**: dòng lệnh shell có phân biệt *chữ thường* và *chữ hoa*
-# Một số mẹo giúp gõ câu lệnh dễ dàng hơn
+### Một số mẹo giúp gõ câu lệnh dễ dàng hơn
 - Dùng $\uparrow$ , $\downarrow$ để xem lại các lệnh vừa gõ
 - `Ctrl` + `C` để huỷ lệnh
 - `Ctrl` + `L` để làm mới màn hình terminal
@@ -39,9 +39,9 @@ AUTHOR
 tên tác giả của lệnh
 ```
 ![](https://imgur.com/Z6Dk7sy.png)
-## pwd (print working directory)
+>## Lệnh pwd (print working directory)
 - Cho phép biết thư mục hiện hành mà người dùng đang làm việc
-## lsblk (list block devices)
+>## Lệnh lsblk (list block devices)
 - Dùng để liệt kê tên thiết bị, thông tin ổ đĩa và phân vùng trong Linux
 - Thông thường, lệnh lsblk không cần bất kỳ tham số bổ sung nào cũng đủ để xác định ổ đĩa hoặc phân vùng bạn muốn làm việc. Tuy nhiên để tránh trường hợp nhầm lẫn tên thiết bị dẫn đến có thể phá huỷ hoặc làm hỏng dữ liệu ta cần thêm các tham số như
 - `--help` : để xem những cột nào **lsblk** có thể hiển thị
@@ -65,7 +65,7 @@ tên tác giả của lệnh
   - Các bản Distro Linux cũ đã mount hệ thống file bằng cách chỉ định tên thiết bị của chúng trong `/etc/fstab`. Điều này không đáng tin cậy bời vì `/dev/sda2` có thể trở thành `/dev/sdb2`, khi ta thêm một thiết bị lưu trữ khác vào hệ thống. Vì vậy **UUID** được sử dụng thay thế, giá trị **UUID** vẫn không đổi dù cho bạn thêm vào hoặc loại bỏ bất chúng khỏi máy tính.
   - Để hiển thị UUID ta dùng câu lệnh: `lsblk -o +UUID`
 ![](https://imgur.com/YLoow1b.png)
-## Lệnh dd
+>## Lệnh dd
 ![](https://imgur.com/78sGWPI.png)
 - dd là một lệnh giúp chuyển đổi và sao chép tệp. Câu lệnh `dd` được dùng để sử dụng trong các trường hợp sau:
   - Sao lưu và phục hồi toàn bộ dữ liệu ổ cứng hoặc một partition
@@ -108,7 +108,7 @@ tên tác giả của lệnh
 `dd if=/root/test.doc of=/root/test1.doc conv=ucase`
 - Tạo một phân vùng trống có dung lượng cố định
 ` dd if=/dev/zero of=/root/file1 bs=100M count=1`
-> ## Lệnh mkdir 
+>## Lệnh mkdir 
 - mkdir là viết tắt của (make directories)
 - Là một lệnh cho phép user được tạo thư mục rỗng trên hệ điều hành Linux. 
 - Có thể tạo được đồng thời nhiều thư mục, cũng như set quyền cho cả thư mục khi tạo ra.
@@ -119,7 +119,7 @@ tên tác giả của lệnh
     - `-m` :phân quyền cho thư mục. VD `mkdir -m 440 newdir` là tạo một thư mục tên là `newdir` với giá trị phân quyền là `440`.
     - `-p`: tạo thư mục con và tạo kèm thư mục cha của nó. VD: `mkdir -p /root/thu_muc1/thu_muc2` là tạo một thư mục cha có tên là `thu_muc1` sau đó tạo thư mục có tên `thu_muc2` là thư mục con của `thu_muc1`
     - `-v`: là hiển thị quá trình tạo ra thư mục và cho ra các thông tin như khởi tạo thư mục thành công hay thất bại, thư mục nào đã tồn tại.
-  > ## Lệnh touch
+>## Lệnh touch
   - Trong linux, mỗi file đều liên kết và chứa các thông tin
     -  `timestamp` 
     -  Thời gian truy cập
@@ -135,7 +135,8 @@ tên tác giả của lệnh
   - `-m`: cập nhật thời gian chỉnh sửa lần cuối cùng
   - `-c -t YYDDHHMM`: chỉnh thời gian truy cập và chỉnh sửa thời gian truy cập của file theo ngày giờ cụ thể.
   - `-t YYMMĐHHMM.SS`: chỉ định thời gian cụ thể khi tạo file
-> ## Lệnh rm (remove files or directories)
+>## Lệnh rm 
+>#### (remove files or directories)
 - Là một dòng lệnh tiện ích được dùng để xoá các file và thư mục.
 - Cú pháp `rm [option] [file]`
 - file ở đây có thể là 1 hoặc nhiều file các file dk ngăn cách nhau bởi dấu cách.VD. `rm file1 file2 file3`
@@ -145,7 +146,7 @@ tên tác giả của lệnh
   - `-i`: yêu cầu nhắc người dùng xác nhận trước khi xoá dữ liệu.
   - `-l`: chỉ đưa ra 1 lời nhắc xác nhận khi xoá nhiều file.
   - `-rf`: xoá một thư mục hoặc file được bảo vệ chống ghi.
-> ## Lệnh rmdir
+>## Lệnh rmdir
 - Dùng để xoá thư mục
 - Cú pháp: `rmdir [option] [thư mục]`
 - VD1: `rmdir thu_muc1` là xoá thư mục 1
@@ -153,7 +154,7 @@ tên tác giả của lệnh
 - Các option:
   -  `-p`: xoá thư mục hiện tại và cả thư mục cha của nó. VD `rmdir -p new1/new2`. Là xoá new2 rồi xoá new1, khác với `rmdir new1/new2` câu lệnh này chỉ xoá /new2 còn new1 vẫn giữ
   -  `-v`: in ra kết quả thư mục đã xoá
-> # Lệnh echo
+>## Lệnh echo
 - Là một câu lệnh hiển thị một đoạn văn bản lên màn hình
 - Cú pháp `echo [option] [text]
 - Ví dụ: `echo vi du ve lenh echo` sẽ cho ra màn hình như sau
@@ -168,14 +169,14 @@ tên tác giả của lệnh
 ![](https://imgur.com/law5WMY.png)
 - Ghi vào file bằng echo. VD ghi đoạn text `day la file 1` vào file test
 ![](https://imgur.com/3ck7ctN.png)
-> # Lệnh cp
+> ## Lệnh cp
 - Là câu lệnh dùng để sao chép 1 file hoặc thư mục trong linux
 - Sao chép 1 file tại thư mục đang làm việc sang thư mục ~/Documents
 ` cp file.txt ~/Documents/`
 - Sao chép khi không đứng tại vị trí thư mục đang đứng, ta dùng đường dẫn 
-`cp ~/Downloads/file.txt ~/Documents/
+`cp ~/Downloads/file.txt ~/Documents/`
 - Đổi tên file khi đang sao chép bằng
-`cp ~/Downloads/ten_file_cu.txt ~/Documents/ten_file_moi.txt
+`cp ~/Downloads/ten_file_cu.txt ~/Documents/ten_file_moi.txt`
 - Sao chép nhiều file bằng cách liệt kê các file vào trong dấu {}. Ví dụ
 ` cp ~/Downloads/{file1,file2,file3,jpg,...} ~/Documents/`
 - sao chép tất cả các file cùng loại
@@ -190,13 +191,13 @@ tên tác giả của lệnh
   - `-n`: ép buộc lệnh copy không được ghi đè nếu file nguồn và file đích trùng tên.
   - `-f`: ép ghi đè khi 2 file bị trùng tên.
   -  `-p`: copy nhưng giữ lại các thuộc tính của file. Các thuộc tính bao gồm
-    - Access time
-    - Modification date
-    - User ID
-    - Group ID
-    - File mode
-    - Access Control Listst  
-## Lệnh sed (stream editor)
+      - Access time
+      - Modification date
+      - User ID
+      - Group ID
+      - File mode
+      - Access Control Listst  
+>## Lệnh sed (stream editor)
 - Là công cụ giúp thao tác với văn bản như tìm kiếm, chỉnh sửa xoá bằng dòng lệnh
 - Cấu trúc lệnh `sed [options] [scripts] [input_file]
 - Option:
@@ -214,7 +215,7 @@ Noi dung thu 3
 ![](https://imgur.com/hCh51Qq.png)
 - TH3: Tìm kiếm và thay thế (lưu nội dungg thay đổi ra file mới)
 ` sed -i .modified s/dung/DUNG test.txt`
-## Câu lệnh wget (world wide web get)
+>## Câu lệnh wget (world wide web get)
 - Là một câu lệnh dùng để trích xuất dữ liệu và nội dung từ nhiều web servers khác nhau.
 - Để có thể sử dụng câu lệnh wget, ta cần tải nó về bằng `yum install -y wget`
 - Sử dụng wget để tải từng file và lưu nó vào thư mục hiện hành. Ví dụ 
@@ -225,7 +226,7 @@ https://wordpress.org/latest.zip
 https://downloads.joomla.org/cms/joomla3/3-8-5/Joomla_3-8-5-Stable-Full_Package.zip
 https://ftp.drupal.org/files/projects/drupal-8.4.5.zip
 ``` 
-  - Lưu file lại sau đó chạy câu lệnh `wget -i test.txt`  . `-i` để lấy tất các các file chứa trong file test.
+  - Lưu file lại sau đó chạy câu lệnh `wget -i test.txt`. `-i` để lấy tất các các file chứa trong file test.
 - Tải file về máy dưới 1 tên khác. Ví dụ `wget -O wordpress-install.zip https://wordpress.org/latest.zip`. Ý nghĩa là file tải về sẽ được lưu dưới tên wordpress-install.zip thay vì tên gốc.
 - Tải file về 1 thư mục được chỉ định. Ví dụ: `wget -P documents/archives/ https://wordpress.org/latest.zip`. Lúc này file tải về sẽ xuất hiện trong thư mục documents/archives/.
 - Giới hạn tốc độ tải file được dùng khi ta muốn tải 1 file lớn và tránh trường hợp chúng dùng hết băng thông của bạn. Ví dụ  `wget --limit-rate=500k https://wordpress.org/latest.zip` .
@@ -233,3 +234,90 @@ https://ftp.drupal.org/files/projects/drupal-8.4.5.zip
 - Tải file trong background được sử dụng khi ta muốn tải file cực lớn và cho nó chạy ẩn để làm các tác vụ khác. Ví dụ: `wget -b https://example.com/beefy-file.tar.gz`. Và để kiểm tra tiến trình và tính trạng ta dùng lệnh `tail -f wget-log`
 - Tiếp tục tải file khi bị gián đoạn, mà không muốn tải lại file từ đầu, ta thêm option `-c`. VD: `wget -c https://example/very-big-file.zip`
 - Tải nhiều file và ta muốn đánh stt cho chúng. Ví dụ `wget http://example.com/images/{1..50}.jpg`
+>## Lệnh cat
+- Lệnh Cat (viết tắt của **concatenate**) là một lệnh cho phép người dùng tạo một hoặc nhiều file, xem nội dung file, nối file và chuyển hướng đầu ra trong terminal hoặc file
+- Cú pháp: `cat [option] [file]`
+- Option: 
+  - `-n`: hiển thị số dòng.  
+#### Cách sử dụng
+##### 1. Hiển thị nội dung của file
+- Ví dụ ta có 1 file `file1` có nội dung như sau
+```
+Day la dong dau tien
+Day la dong thu hai
+Day la dong thu ba
+```
+- Để hiển thị nội dung của file lênh màn hình terminal ta dùng lệnh `cat file1`
+![](https://imgur.com/hXOcV9y.png)
+- Tạo file và nhập nội dung từ bàn phím ta dùng lệnh `cat >file2`. Sau đó ta nhập nội dung rồi ấn Enter, và bấm Ctrl + D để kết thúc.
+- Xem file có nội dung lớn không vừa với terminal dùng lệnh `cat file2 | less` hoặc `cat file2 | more`
+- `cat file1 file2 > file3` là lấy nội dung của **file1** và **file2** làm nội dung của **file3** theo thứ tự lần lượt.
+![](https://imgur.com/XYzdkpu.png)
+- `cat file1 >> file2` là ghi nội dung của file1 vào cuối file2
+![](https://imgur.com/erRfjhq.png)
+>## Lệnh grep
+- Lệnh `grep` là một lệnh được dùng để tìm kiếm một chuỗi trong file chỉ định.
+- Ví dụ, ta có file `testgrep.txt` có nội dung như sau
+```
+Day la dong thu nhat
+Day la dong thu hai
+Day la dong thu ba
+```
+#### Tìm kiếm mỗi chuỗi trong file
+- Nếu muốn tìm 1 chuỗi nào đó trong một file duy nhất, ta dùng cú pháp `grep "chuỗi cần tìm" tên_file"`. VD `grep "dong" testgrep.txt`, kết quả là màn hình đưa ra chuỗi cần tìm với màu đỏ.
+![](https://imgur.com/ezEZfNS.png)
+#### Tìm chuỗi trong nhiều file cùng lúc
+- Là tìm kiếm điểm chung giữa các file. Ví dụ ta tạo thêm 1 file `testgrep1.txt` với nội dung 
+```
+Kiem tra diem chung 
+```
+- Câu lệnh tìm kiếm sẽ là `grep "diem_chung" *.txt`. Ví dụ `grep "hai" *.txt` là tìm kiếm các file.txt có chuỗi `hai`.
+#### Tìm kiếm chính xác
+Để tìm kiếm chính xác chuỗi cần tìm, ta thêm option `-w`. Ví dụ
+![](https://imgur.com/nUXBrtB.png)
+- Nếu ta tìm kiếm chuỗi `on` thì kết quả trả ra cho chuỗi `dong` cũng chứa `on` vì vậy cần phải thêm `-w` để kết quả trả đúng chuỗi cần tìm.
+#### Tìm kiếm một chuỗi trong tất cả các file ở thư mục
+- Để tìm kiếm 1 chuỗi ở trong tất cả các file nằm trong 1 folder ta thêm option `-r`. Ví dụ `grep -r "chuỗi" tên_folder`
+#### Tìm kiếm dòng không chứa chuỗi
+- `grep -v "chuỗi" tên file`
+- Tìm kiếm dòng không chứa chuỗi hoặc các dòng bắt đầu bằng # hay khoảng trắng
+```
+egrep -v '^#|^$'
+```
+- Ở đây, dấu `^` có ý nghĩa là bắt đầu. 
+#### Đếm số kết quả
+- `grep -c "chuỗi" tên_file` là hiện thị có bao nhiêu kết quả trả về.
+#### Hiện xem chuỗi cần tìm nằm ở file nào trong thư mục
+- `grep -l "chuỗi" thu_muc`
+#### Hiện thị chuỗi đang tìm nằm ở dòng nào
+- `grep -n -w "chuỗi" ten_file`
+#### Tìm kiếm không phân biệt chữ hoa chữ thường
+- `grep -i "chuỗi" ten_file`
+#### Tìm kiếm trong file lớn
+- `grep -<A, B hoặc C> <n> "chuoi" ten_file`
+  - `-A` : là after
+  - `-B` : là before
+  - `-C` : là xung quanh
+  - `-n` : là số tự nhiên chỉ định xem hiển thị trước, sau hay xung quang bao nhiêu dòng
+- Ví dụ: 
+```
+grep -B 3 -iw "chuoi" demo_file
+```
+- Tức là hiển thị trước kết quả thêm nội dung của 3 dòng nữa. Không phân biệt hoa thường và tìm chính xác.
+>## Lệnh mv
+- Là câu lệnh dùng để di chuyển file, đổi tên file và folder trong linux.
+- Cú pháp `mv [option] [source] [destination]`. Trong đó `source` là file hay thư mục cần di chuyển, `destination` là vị trí đến của thư mục
+- Options
+  - `-i`: hiện thông báo xác nhận ghi đè khi thực hiện di chuyển
+  - `-n`: không ghi dè vào file đã tồn tại khi di chuyển. 
+  - `-b`: tạo ra một bản backup của file trước đó khi thực hiện ghi đè. Tên của file backup sẽ cùng với tên của file gốc với dấu `~` được thêm vào.
+### Di chuyển 1 file
+-VD `mv file1 /tmp` là di chuyển **file1** ở thư mục đang đứng sang thư mục **/tmp**.
+### Di chuyển nhiều file
+- VD `mv file1 file2 dir1` là di chuyển **file1** và **file2** sang thư mục **dir1**.
+### Di chuyển file cùng kiểu
+- VD `mv *.pdf ~/Documents` là di chuyển các file có định dạng pdf sang **~/Documents**.
+### Di chuyển thư mục
+- VD `mv dir1 dir2`
+  - Nếu thư mục **dir2** đã tồn tại thì lệnh sẽ di chuyển thư mục **dir1** vào trong **dir2**.
+  - Nếu thư mục **dir2** không tồn tại thì **dir1** sẽ được đổi tên thành **dir2**.
