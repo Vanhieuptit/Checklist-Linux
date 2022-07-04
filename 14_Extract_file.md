@@ -38,6 +38,7 @@ hoặc
 - Lưu trữ và bỏ qua tập tin theo yêu cầu
 - Câu lệnh: `tar -cvf [ten file] [đường dẫn] --exclude='tên file cần loại bỏ'`
   - VD: loại bỏ file *.pyc ra khỏi việc đóng gói nén dữ liệu tại thư mục /usr/lib/python3/dist-packages/apt ` tar -cvf ten_file.tar /usr/lib/python3/dist-packages/apt --exclude='*.pyc'`
+  - Giải nén vào thư mục cụ thể ` tar -xzvf ten_file.tar -C /thu_muc `
 ## Zip - Unzip
 - Cài đặt Zip bằng câu lệnh ` yum install -y zip` 
 -  Cài đặt UnZip bằng câu lệnh ` yum install -y unzip` 

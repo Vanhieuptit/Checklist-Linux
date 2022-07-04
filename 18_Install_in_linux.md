@@ -1,4 +1,7 @@
 # Cách thức cài đặt trong Linux
+- Các phần mềm trên linux không tự đóng gói sẵn bởi vì chúng phải chạy trên nhiều hệ thống khác nhau trong họ Unix như Solaris, AIX, HP-UX,...
+- Với mỗi loại hệ thống, nếu muốn sử dụng được phần mềm thì ta cần phải biên dịch lại chúng.
+- Một số nhà phát triển đã biên dịch sẵn các phần mềm cho chúng ta ra các gói có dạng rpm và cùng với sự hỗ trợ của công ty Red Hat, chúng ta cũng đã có những chương trình quản lý các phần mềm một cách hiệu quả.
 ## Cài đặt từ `rpm`
 - RedHat Package Manager (RPM) là hệ thống quản lý những package được linux hỗ trợ cho người dùng.
 - Chúng giống như định dạng file nén mà trong đó chứa tất cả những file chạy và cấu hình của phần mềm, thông tin phần mềm, nhà sản xuất, những yêu cầu về hệ thống...

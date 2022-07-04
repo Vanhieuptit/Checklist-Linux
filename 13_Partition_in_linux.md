@@ -26,7 +26,13 @@
 - GPT (GUID Partition Table) là chuẩn mới hơn MBR, hỗ trợ đến 128 phân vùng trên một ổ đĩa vật lý. Thông tin về các partition sẽ được ghi thành nhiều bản rải rác khắp ổ vật lý.
 - Trên ổ đĩa MBR, dữ liệu của phần vùng và dữ liệu khởi động được lưu trữ ở một vị trí. Nếu dữ liệu này bị ghi đè hoặc hỏng, khi đó bạn sẽ phải gặp các rắc rồi. Ngược lại GPT lưu trữ nhiều bản sao của các dữ liệu này trên đĩa, do đó bạn có thể khôi phục các dữ liệu nếu dữ liệu này bị lỗi.
 - GPT hỗ trợ cơ chế kiểm tra và chỉnh sửa dữ liệu dựa trên CRC (cyclic redundancy check). Nhờ 2 cơ chế này, chuẩn GPT làm giảm tỷ lệ mất mát dữ liệu. Ngoài ra, nếu ta cần khởi tạo một phần vùng với dung lượng lớn hơn 2TB, ta sẽ phải dùng GPT vì MBR không hỗ trợ dung lượng lớn hơn 2TB.
-### Công cụ phân vùng ổ cứng
+### Phân vùng ổ cứng thủ công khi cài hệ điều hành 
+- Phân vùng tiêu chuẩn của linux như sau
+  - Phân vùng `/boot` chứa những gì cơ bản cần thiết để cài đặt hệ điều hành. 
+  - Phân vùng chứa hệ điều hành, được biểu thị dưới dạng `/`
+  - Phân vùng **Swap** là phân vùng có nhiệm vụ sử dụng bộ nhớ ổ cứng làm nhiệm vụ như một thanh RAM (khi RAM bị đầy), tuy nhiên tốc độ sẽ chậm hơn RAM rất nhiều. Phân vùng Swap chỉ là một biện pháp dự phòng đầy RAM bất ngờ, vì vậy chỉ nên cài Swap với dung lượng tối đa bằng 1 nửa RAM thật để tiết kiệm bộ nhớ ổ cứng.
+  - Phân vùng `/home` là phân vùng dùng để lưu trữ dữ liệu cá nhân. Rất hữu ích khi có `/home` là một phân vùng riêng biệt vì khi nâng cấp hoặc cài đặt lại hệ điều hành của mình, bạn không phải sao lưu bất kỳ thứ gì trong thư mục này.
+### Công cụ phân vùng ổ cứng (sau khi đã cài hệ điều hành)
 #### fdisk
 - Chỉ để tạo phân vùng dưới 2TB
 - Chỉ hỗ trợ ổ cứng chuẩn MBR
