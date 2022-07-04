@@ -142,7 +142,7 @@ tên tác giả của lệnh
 - file ở đây có thể là 1 hoặc nhiều file các file dk ngăn cách nhau bởi dấu cách.VD. `rm file1 file2 file3`
 - Các option
   - `-d`: xoá thư mục 
-  - `-r`: xoá thư mục không có dữ liệu và tất cả các file bên trong thư mục đó.
+  - `-r`: xoá thư mục có dữ liệu và tất cả các file bên trong thư mục đó.
   - `-i`: yêu cầu nhắc người dùng xác nhận trước khi xoá dữ liệu.
   - `-l`: chỉ đưa ra 1 lời nhắc xác nhận khi xoá nhiều file.
   - `-rf`: xoá một thư mục hoặc file được bảo vệ chống ghi.
@@ -251,6 +251,7 @@ Day la dong thu ba
 ![](https://imgur.com/hXOcV9y.png)
 - Tạo file và nhập nội dung từ bàn phím ta dùng lệnh `cat >file2`. Sau đó ta nhập nội dung rồi ấn Enter, và bấm Ctrl + D để kết thúc.
 - Xem file có nội dung lớn không vừa với terminal dùng lệnh `cat file2 | less` hoặc `cat file2 | more`
+- `cat file1 > file2` là lấy nội dung của file1 ghi đè lên file2.
 - `cat file1 file2 > file3` là lấy nội dung của **file1** và **file2** làm nội dung của **file3** theo thứ tự lần lượt.
 ![](https://imgur.com/XYzdkpu.png)
 - `cat file1 >> file2` là ghi nội dung của file1 vào cuối file2
@@ -321,3 +322,28 @@ grep -B 3 -iw "chuoi" demo_file
 - VD `mv dir1 dir2`
   - Nếu thư mục **dir2** đã tồn tại thì lệnh sẽ di chuyển thư mục **dir1** vào trong **dir2**.
   - Nếu thư mục **dir2** không tồn tại thì **dir1** sẽ được đổi tên thành **dir2**.
+## Lệnh tail
+- Xem 10 dòng cuối cùng của file 
+```
+tail file.txt
+```
+- Mặc định lệnh tại sẽ xem 10 dòng cuối trong file, để hiển thị nhiều hơn với con số tuỳ chọn ta thêm `-n`
+```
+tail -n 50 file.txt
+```
+hoặc
+```
+tail -50 file.txt
+```
+- Hiển thị theo dung lượng: hiển thị 500 byte cuối của file
+```
+tail -c 500 file.txt
+```
+- Hiển thị theo đơn vị tuỳ chọn: vd hiển thị 2k byte hay 2048 bytes
+```
+tail -c 2k file.txt
+```
+- Hiển thị sự thay đổi của file trong thời gian thực
+```
+tail -f file.txt
+```
