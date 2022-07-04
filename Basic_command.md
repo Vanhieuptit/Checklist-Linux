@@ -347,3 +347,42 @@ tail -c 2k file.txt
 ```
 tail -f file.txt
 ```
+>## Lệnh find
+- Là lệnh tìm kiếm và định vị danh sách các tệp và thư mục dựa trên các điều kiện bạn chỉ định cho các tệp khớp với các đối số cần tìm.
+### Tìm kiếm theo tên file, thư mục
+#### Tìm kiếm file có trong thư mục hiện tại
+```
+find . -name config.txt
+./config.txt
+```
+- Câu lệnh trên thực hiện tìm file có tên là **config.txt** trong thư mục đang đứng. Kết quả trả ra là **./config.txt** dấu `.` tương ứng với vị trí đang đứng.
+#### Tìm file có trong thư mục bất kỳ
+```
+find /home -name config.txt
+```
+- Câu lệnh trên thực hiện tìm fiile có tên **config.txt** có trong thư mục **/home**. Kết quả trả về là 
+```
+/home/config.txt
+```
+**/home/config.txt** là đường dẫn tới thư mục cần tìm.
+#### Tìm kiếm file theo định dạng tên
+```
+ find /home -iname config.txt
+```
+- Câu lệnh trên thực hiện tìm tất cả các tệp có tên là **config.txt** không phân biệt chữ hoa, chữ thường
+- Kết quả trả về 
+```
+/home/config.txt
+/home/data/CONFIG.txt
+```
+#### Tìm kiếm thư mục theo tên
+```
+find / -type d -name tel14vn
+```
+- Câu lênh trên thực hiện tìm kiếm thư mục có tên **tel14vn**
+#### Tìm kiếm file theo định dạng
+```
+find /home type f -name ".php" 
+```
+- Câu lệnh trên thực hiện tìm kiếm các file có định dạng **.php** trong thư mục **/home**.
+
