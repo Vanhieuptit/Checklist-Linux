@@ -2,6 +2,22 @@
 [1. Tổng quan](#tongquan)
 
 [2. Hướng dẫn sử dụng lệnh](#man)
+
+[3. Xem thông tin ổ đĩa](#lsblk)
+
+[4. Sao lưu, di chuyển ổ đĩa](#dd)
+
+[5. Tạo thư mục](#mkdir)
+
+[6. Tạo file](#touch)
+
+[7. Xoá file](#rm)
+
+[8. Lệnh echo](#echo)
+
+
+
+
 <a name = "tongquan">
 - Cấu trúc dòng lệnh shell có dạng tổng quát như sau:
 `**command**  **[option]**  **arguments**`
@@ -48,6 +64,8 @@ tên tác giả của lệnh
 
 >## Lệnh pwd (print working directory)
 - Cho phép biết thư mục hiện hành mà người dùng đang làm việc
+<a name = "lsblk">
+
 >## Lệnh lsblk (list block devices)
 - Dùng để liệt kê tên thiết bị, thông tin ổ đĩa và phân vùng trong Linux
 - Thông thường, lệnh lsblk không cần bất kỳ tham số bổ sung nào cũng đủ để xác định ổ đĩa hoặc phân vùng bạn muốn làm việc. Tuy nhiên để tránh trường hợp nhầm lẫn tên thiết bị dẫn đến có thể phá huỷ hoặc làm hỏng dữ liệu ta cần thêm các tham số như
@@ -72,6 +90,8 @@ tên tác giả của lệnh
   - Các bản Distro Linux cũ đã mount hệ thống file bằng cách chỉ định tên thiết bị của chúng trong `/etc/fstab`. Điều này không đáng tin cậy bời vì `/dev/sda2` có thể trở thành `/dev/sdb2`, khi ta thêm một thiết bị lưu trữ khác vào hệ thống. Vì vậy **UUID** được sử dụng thay thế, giá trị **UUID** vẫn không đổi dù cho bạn thêm vào hoặc loại bỏ bất chúng khỏi máy tính.
   - Để hiển thị UUID ta dùng câu lệnh: `lsblk -o +UUID`
 ![](https://imgur.com/YLoow1b.png)
+<a name = "dd">
+
 >## Lệnh dd
 ![](https://imgur.com/78sGWPI.png)
 - dd là một lệnh giúp chuyển đổi và sao chép tệp. Câu lệnh `dd` được dùng để sử dụng trong các trường hợp sau:
@@ -115,6 +135,9 @@ tên tác giả của lệnh
 `dd if=/root/test.doc of=/root/test1.doc conv=ucase`
 - Tạo một phân vùng trống có dung lượng cố định
 ` dd if=/dev/zero of=/root/file1 bs=100M count=1`
+
+<a name = "mkdir">
+
 >## Lệnh mkdir 
 - mkdir là viết tắt của (make directories)
 - Là một lệnh cho phép user được tạo thư mục rỗng trên hệ điều hành Linux. 
@@ -126,6 +149,8 @@ tên tác giả của lệnh
     - `-m` :phân quyền cho thư mục. VD `mkdir -m 440 newdir` là tạo một thư mục tên là `newdir` với giá trị phân quyền là `440`.
     - `-p`: tạo thư mục con và tạo kèm thư mục cha của nó. VD: `mkdir -p /root/thu_muc1/thu_muc2` là tạo một thư mục cha có tên là `thu_muc1` sau đó tạo thư mục có tên `thu_muc2` là thư mục con của `thu_muc1`
     - `-v`: là hiển thị quá trình tạo ra thư mục và cho ra các thông tin như khởi tạo thư mục thành công hay thất bại, thư mục nào đã tồn tại.
+<a name = "touch">
+
 >## Lệnh touch
   - Trong linux, mỗi file đều liên kết và chứa các thông tin
     -  `timestamp` 
@@ -142,8 +167,9 @@ tên tác giả của lệnh
   - `-m`: cập nhật thời gian chỉnh sửa lần cuối cùng
   - `-c -t YYDDHHMM`: chỉnh thời gian truy cập và chỉnh sửa thời gian truy cập của file theo ngày giờ cụ thể.
   - `-t YYMMĐHHMM.SS`: chỉ định thời gian cụ thể khi tạo file
->## Lệnh rm 
->#### (remove files or directories)
+<a name = "rm">
+
+>## Lệnh rm (remove files or directories)
 - Là một dòng lệnh tiện ích được dùng để xoá các file và thư mục.
 - Cú pháp `rm [option] [file]`
 - file ở đây có thể là 1 hoặc nhiều file các file dk ngăn cách nhau bởi dấu cách.VD. `rm file1 file2 file3`
@@ -153,6 +179,8 @@ tên tác giả của lệnh
   - `-i`: yêu cầu nhắc người dùng xác nhận trước khi xoá dữ liệu.
   - `-l`: chỉ đưa ra 1 lời nhắc xác nhận khi xoá nhiều file.
   - `-rf`: xoá một thư mục hoặc file được bảo vệ chống ghi.
+<a name = "rmdir">
+
 >## Lệnh rmdir
 - Dùng để xoá thư mục
 - Cú pháp: `rmdir [option] [thư mục]`
@@ -161,6 +189,8 @@ tên tác giả của lệnh
 - Các option:
   -  `-p`: xoá thư mục hiện tại và cả thư mục cha của nó. VD `rmdir -p new1/new2`. Là xoá new2 rồi xoá new1, khác với `rmdir new1/new2` câu lệnh này chỉ xoá /new2 còn new1 vẫn giữ
   -  `-v`: in ra kết quả thư mục đã xoá
+<a name = "echo">
+
 >## Lệnh echo
 - Là một câu lệnh hiển thị một đoạn văn bản lên màn hình
 - Cú pháp `echo [option] [text]
@@ -176,6 +206,7 @@ tên tác giả của lệnh
 ![](https://imgur.com/law5WMY.png)
 - Ghi vào file bằng echo. VD ghi đoạn text `day la file 1` vào file test
 ![](https://imgur.com/3ck7ctN.png)
+
 > ## Lệnh cp
 - Là câu lệnh dùng để sao chép 1 file hoặc thư mục trong linux
 - Sao chép 1 file tại thư mục đang làm việc sang thư mục ~/Documents
