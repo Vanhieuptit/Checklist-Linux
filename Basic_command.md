@@ -1,6 +1,6 @@
 > # Các lệnh Linux cơ bản
 [1. Tổng quan](#tongquan)
-[2. pwd](#pwd)
+[2. Hướng dẫn sử dụng lệnh](#man)
 <a name = "tongquan">
 
 - Cấu trúc dòng lệnh shell có dạng tổng quát như sau:
