@@ -1,4 +1,8 @@
 > # Các lệnh Linux cơ bản
+[1. Tổng quan](#tongquan)
+[2. pwd](#pwd)
+<a name = "tongquan">
+
 - Cấu trúc dòng lệnh shell có dạng tổng quát như sau:
 `**command**  **[option]**  **arguments**`
 - Trong đó:
@@ -16,6 +20,7 @@
 - Dùng lệnh `history` để xem lại lịch sử gõ lệnh
 - Gõ `![number]` với number là số thứ tự của câu lệnh trong mục `history` để xem lại nhanh câu lệnh
 - `Ctrl`+`R` để tìm kiếm các lệnh đã gõ trước đó
+<a name = "man">
 > ## Lệnh man
 - Dùng để xem hướng dẫn dùng 1 lệnh cụ thể trong Linux
 `# man <tên lệnh>`
@@ -39,6 +44,7 @@ AUTHOR
 tên tác giả của lệnh
 ```
 ![](https://imgur.com/Z6Dk7sy.png)
+
 >## Lệnh pwd (print working directory)
 - Cho phép biết thư mục hiện hành mà người dùng đang làm việc
 >## Lệnh lsblk (list block devices)

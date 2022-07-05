@@ -19,3 +19,4 @@
 18. [Cài đặt phần mềm trong linux](18_Install_in_linux.md)
 19. [Reset lại khi quên mật khẩu linux](19_Recovery_Password_in_linux.md)
 20. [SElinux](20_SElinux.md)
+21. [Các câu lệnh cơ bản trong linux](Basic_command.md)
